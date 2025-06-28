@@ -250,21 +250,99 @@ export default function NewJobPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     자격요건
                   </label>
-                  <textarea
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="예: 사무용 프로그램 활용 가능자, 고객 응대 경험자 우대"
-                  />
+                  <div className="space-y-4">
+                    {/* 체크박스 옵션들 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">컴퓨터 활용 가능 (한글, 엑셀 등)</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">고객 응대 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">사무업무 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">성실하고 책임감 있는 분</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">원활한 의사소통 능력</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">장기근무 가능자</span>
+                      </label>
+                    </div>
+                    {/* 직접 입력란 */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        추가 자격요건 (선택사항)
+                      </label>
+                      <textarea
+                        rows={2}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="위에 없는 특별한 자격요건이 있다면 입력해주세요"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     우대사항
                   </label>
-                  <textarea
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    placeholder="예: 법무사 사무실 경험자, 관련 자격증 보유자"
-                  />
+                  <div className="space-y-4">
+                    {/* 체크박스 옵션들 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">변호사 사무실 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">세무사 사무실 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">법무사 사무실 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">회계사 사무실 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">관련 자격증 보유</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">외국어 가능 (영어, 중국어 등)</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">회계 프로그램 사용 경험</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 text-primary-600 focus:ring-primary-500" />
+                        <span className="ml-2 text-sm text-gray-700">법률 업무 관련 경험</span>
+                      </label>
+                    </div>
+                    {/* 직접 입력란 */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        추가 우대사항 (선택사항)
+                      </label>
+                      <textarea
+                        rows={2}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="위에 없는 특별한 우대사항이 있다면 입력해주세요"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
