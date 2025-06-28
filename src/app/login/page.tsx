@@ -38,31 +38,31 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">이메일</label>
-            <input
-              type="email"
+            <input 
+              type="email" 
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-colors"
-              placeholder="이메일을 입력하세요"
-              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-colors" 
+              placeholder="이메일을 입력하세요" 
+              required 
             />
           </div>
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">비밀번호</label>
-            <input
-              type="password"
+            <input 
+              type="password" 
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-colors"
-              placeholder="비밀번호를 입력하세요"
-              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-colors" 
+              placeholder="비밀번호를 입력하세요" 
+              required 
             />
           </div>
           {error && <div className="text-red-600 text-sm text-center">{error}</div>}
-          <button
-            type="submit"
+          <button 
+            type="submit" 
             className="w-full bg-[#1a2341] hover:bg-[#2563eb] text-white py-3 rounded-xl font-bold text-lg transition-colors disabled:opacity-60"
             disabled={loading}
           >

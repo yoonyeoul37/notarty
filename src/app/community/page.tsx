@@ -134,193 +134,201 @@ export default function CommunityPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header Section */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            사무실 근무자 커뮤니티
-          </h1>
-          <p className="text-xl text-gray-600">
-            전문직 사무실에서 일하는 분들과 정보를 공유하고 소통해보세요
-          </p>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-            <Users className="h-8 w-8 text-primary-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-gray-900">1,234</div>
-            <div className="text-gray-600">활성 회원</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-            <MessageCircle className="h-8 w-8 text-green-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-gray-900">5,678</div>
-            <div className="text-gray-600">총 게시글</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-            <MessageSquare className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-gray-900">12,345</div>
-            <div className="text-gray-600">총 댓글</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-            <TrendingUp className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-gray-900">89</div>
-            <div className="text-gray-600">오늘 게시글</div>
-          </div>
-        </div>
-
-        {/* Search and Filter */}
-        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="text"
-                  placeholder="게시글 검색..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-            <Link href="/community/new">
-              <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
-                <Plus className="h-5 w-5" />
-                <span>글쓰기</span>
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar - Categories */}
-          <div className="lg:w-64">
-            <div className="bg-white rounded-xl shadow-sm p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">카테고리</h3>
-              <div className="space-y-2">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`w-full flex justify-between items-center px-3 py-2 rounded-lg text-left transition-colors ${
-                      selectedCategory === category.id
-                        ? 'bg-primary-100 text-primary-700 font-medium'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    <span>{category.name}</span>
-                    <span className="text-sm text-gray-500">({category.count})</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            {/* 배너 광고 칸 3개 */}
-            <div className="mt-6 flex flex-col gap-4">
-              <div className="w-full aspect-square bg-gray-100 rounded-xl shadow flex items-center justify-center">
-                <span className="text-gray-400 text-lg">배너 광고 1</span>
-              </div>
-              <div className="w-full aspect-square bg-gray-100 rounded-xl shadow flex items-center justify-center">
-                <span className="text-gray-400 text-lg">배너 광고 2</span>
-              </div>
-              <div className="w-full aspect-square bg-gray-100 rounded-xl shadow flex items-center justify-center">
-                <span className="text-gray-400 text-lg">배너 광고 3</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content - Posts */}
-          <div className="flex-1">
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              {/* Posts Header */}
-              <div className="px-6 py-4 border-b border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  {selectedCategory === 'all' ? '전체 게시글' : categories.find(c => c.id === selectedCategory)?.name + ' 게시글'}
-                </h2>
-              </div>
-
-              {/* Posts List */}
-              <div className="divide-y divide-gray-200">
-                {currentPosts.map((post) => (
-                  <div key={post.id} className="p-3 hover:bg-gray-50 transition-colors">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            post.category === 'question' ? 'bg-blue-100 text-blue-700' :
-                            post.category === 'info' ? 'bg-green-100 text-green-700' :
-                            post.category === 'daily' ? 'bg-purple-100 text-purple-700' :
-                            post.category === 'career' ? 'bg-orange-100 text-orange-700' :
-                            'bg-gray-100 text-gray-700'
-                          }`}>
-                            {categories.find(c => c.id === post.category)?.name}
-                          </span>
-                          {post.isHot && (
-                            <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
-                              HOT
-                            </span>
-                          )}
-                        </div>
-                        <Link href={`/community/${post.id}`}>
-                          <h3 className="text-lg font-semibold text-gray-900 hover:text-primary-600 transition-colors mb-1">
-                            {post.title}
-                          </h3>
-                        </Link>
-                        {/* <p className="text-gray-600 text-sm mb-3 line-clamp-2">{post.content}</p> */}
-                        <div className="flex items-center justify-between text-sm text-gray-500">
-                          <div className="flex items-center space-x-4">
-                            <span>{post.author}</span>
-                            <span>{post.createdAt}</span>
-                          </div>
-                          <div className="flex items-center space-x-4">
-                            <div className="flex items-center space-x-1">
-                              <ThumbsUp className="h-4 w-4" />
-                              <span>{post.likes}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              <MessageSquare className="h-4 w-4" />
-                              <span>{post.comments}</span>
-                            </div>
-                            <span>조회 {post.views}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Pagination */}
-              <div className="px-6 py-4 border-t border-gray-200">
-                <div className="flex justify-center">
-                  <nav className="flex space-x-2">
+        <div className="flex gap-8">
+          {/* Sidebar - Categories & 광고 배너 */}
+          <aside className="w-64 flex-shrink-0 flex flex-col">
+            <div className="sticky top-8 z-10">
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">카테고리</h3>
+                <div className="space-y-2">
+                  {categories.map((category) => (
                     <button
-                      className="px-3 py-2 text-gray-500 hover:text-gray-700 rounded-lg"
-                      onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                      disabled={currentPage === 1}
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`w-full flex justify-between items-center px-3 py-2 rounded-lg text-left transition-colors ${
+                        selectedCategory === category.id
+                          ? 'bg-primary-100 text-primary-700 font-medium'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
                     >
-                      이전
+                      <span>{category.name}</span>
+                      <span className="text-sm text-gray-500">({category.count})</span>
                     </button>
-                    {Array.from({ length: totalPages }, (_, i) => (
-                      <button
-                        key={i + 1}
-                        className={`px-3 py-2 rounded-lg ${currentPage === i + 1 ? 'bg-primary-600 text-white' : 'text-gray-700 hover:text-gray-900'}`}
-                        onClick={() => setCurrentPage(i + 1)}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                    <button
-                      className="px-3 py-2 text-gray-500 hover:text-gray-700 rounded-lg"
-                      onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                      disabled={currentPage === totalPages}
-                    >
-                      다음
-                    </button>
-                  </nav>
+                  ))}
+                </div>
+              </div>
+              
+              {/* 카테고리 아래 광고 배너 3개 - 흰색 박스 밖, 같은 sticky 컨테이너 안에 */}
+              <div className="flex flex-col gap-4 mt-4">
+                <div className="w-full aspect-[3/1.5] bg-gray-100 rounded-xl shadow flex items-center justify-center">
+                  <span className="text-gray-400 text-2xl">배너 광고 1</span>
+                </div>
+                <div className="w-full aspect-[3/1.5] bg-gray-100 rounded-xl shadow flex items-center justify-center">
+                  <span className="text-gray-400 text-2xl">배너 광고 2</span>
+                </div>
+                <div className="w-full aspect-[3/1.5] bg-gray-100 rounded-xl shadow flex items-center justify-center">
+                  <span className="text-gray-400 text-2xl">배너 광고 3</span>
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
+  
+          {/* Main Content - Posts */}
+          <main className="main-content flex-1">
+            {/* Header Section */}
+            <div className="text-center mb-8">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                사무실 근무자 커뮤니티
+              </h1>
+              <p className="text-xl text-gray-600">
+                전문직 사무실에서 일하는 분들과 정보를 공유하고 소통해보세요
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+              <div className="bg-white rounded-xl p-6 text-center shadow-sm">
+                <Users className="h-8 w-8 text-primary-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">1,234</div>
+                <div className="text-gray-600">활성 회원</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow-sm">
+                <MessageCircle className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">5,678</div>
+                <div className="text-gray-600">총 게시글</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow-sm">
+                <MessageSquare className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">12,345</div>
+                <div className="text-gray-600">총 댓글</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow-sm">
+                <TrendingUp className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">89</div>
+                <div className="text-gray-600">오늘 게시글</div>
+              </div>
+            </div>
+
+            {/* Search and Filter */}
+            <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                    <input
+                      type="text"
+                      placeholder="게시글 검색..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+                <Link href="/community/new">
+                  <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors">
+                    <Plus className="h-5 w-5" />
+                    <span>글쓰기</span>
+                  </button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Main Content - Posts */}
+              <div className="flex-1">
+                <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                  {/* Posts Header */}
+                  <div className="px-6 py-4 border-b border-gray-200">
+                    <h2 className="text-xl font-semibold text-gray-900">
+                      {selectedCategory === 'all' ? '전체 게시글' : categories.find(c => c.id === selectedCategory)?.name + ' 게시글'}
+                    </h2>
+                  </div>
+
+                  {/* Posts List */}
+                  <div className="divide-y divide-gray-200">
+                    {currentPosts.map((post) => (
+                      <div key={post.id} className="p-3 hover:bg-gray-50 transition-colors">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-2">
+                              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                post.category === 'question' ? 'bg-blue-100 text-blue-700' :
+                                post.category === 'info' ? 'bg-green-100 text-green-700' :
+                                post.category === 'daily' ? 'bg-purple-100 text-purple-700' :
+                                post.category === 'career' ? 'bg-orange-100 text-orange-700' :
+                                'bg-gray-100 text-gray-700'
+                              }`}>
+                                {categories.find(c => c.id === post.category)?.name}
+                              </span>
+                              {post.isHot && (
+                                <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
+                                  HOT
+                                </span>
+                              )}
+                            </div>
+                            <Link href={`/community/${post.id}`}>
+                              <h3 className="text-lg font-semibold text-gray-900 hover:text-primary-600 transition-colors mb-1">
+                                {post.title}
+                              </h3>
+                            </Link>
+                            {/* <p className="text-gray-600 text-sm mb-3 line-clamp-2">{post.content}</p> */}
+                            <div className="flex items-center justify-between text-sm text-gray-500">
+                              <div className="flex items-center space-x-4">
+                                <span>{post.author}</span>
+                                <span>{post.createdAt}</span>
+                              </div>
+                              <div className="flex items-center space-x-4">
+                                <div className="flex items-center space-x-1">
+                                  <ThumbsUp className="h-4 w-4" />
+                                  <span>{post.likes}</span>
+                                </div>
+                                <div className="flex items-center space-x-1">
+                                  <MessageSquare className="h-4 w-4" />
+                                  <span>{post.comments}</span>
+                                </div>
+                                <span>조회 {post.views}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Pagination */}
+                  <div className="px-6 py-4 border-t border-gray-200">
+                    <div className="flex justify-center">
+                      <nav className="flex space-x-2">
+                        <button
+                          className="px-3 py-2 text-gray-500 hover:text-gray-700 rounded-lg"
+                          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                          disabled={currentPage === 1}
+                        >
+                          이전
+                        </button>
+                        {Array.from({ length: totalPages }, (_, i) => (
+                          <button
+                            key={i + 1}
+                            className={`px-3 py-2 rounded-lg ${currentPage === i + 1 ? 'bg-primary-600 text-white' : 'text-gray-700 hover:text-gray-900'}`}
+                            onClick={() => setCurrentPage(i + 1)}
+                          >
+                            {i + 1}
+                          </button>
+                        ))}
+                        <button
+                          className="px-3 py-2 text-gray-500 hover:text-gray-700 rounded-lg"
+                          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                          disabled={currentPage === totalPages}
+                        >
+                          다음
+                        </button>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </div>
