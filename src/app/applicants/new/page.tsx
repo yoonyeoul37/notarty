@@ -106,6 +106,7 @@ export default function NewApplicantPage() {
             <div className="flex items-center space-x-4">
               <Link href="/jobs/new" className="text-gray-600 hover:text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">구인등록</Link>
               <Link href="/applicants/new" className="text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">구직등록</Link>
+              <Link href="/community" className="text-gray-600 hover:text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">커뮤니티</Link>
               <button className="text-gray-600 hover:text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">로그인</button>
               <button className="bg-[#1a2341] hover:bg-[#2563eb] text-white px-4 py-2 rounded-md text-sm font-bold shadow-lg border border-[#1a2341]">
                 회원가입
