@@ -1,4 +1,4 @@
-import { Search, Building2, Users, MapPin, Briefcase, Calendar, Play, ArrowRight } from 'lucide-react';
+import { Search, Building2, Users, MapPin, Briefcase, Calendar, Play, ArrowRight, TrendingUp, Star, Clock, Shield } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -11,172 +11,210 @@ export default function Home() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <h1 className="text-3xl font-bold text-white">노터리</h1>
-                <span className="ml-3 text-sm text-gray-300">전문직 사무실 구인구직</span>
+                <span className="ml-3 text-sm text-gray-300">전문직 사무실 구인구직의 새로운 기준</span>
               </Link>
             </div>
-            <div className="flex items-center space-x-6">
-              <Link href="/jobs/new" className="text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+            <div className="flex items-center space-x-4">
+              <Link href="/jobs/new" className="text-white hover:text-primary-200 px-3 py-2 rounded-md text-sm font-medium">
                 구인등록
               </Link>
-              <Link href="/applicants/new" className="text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link href="/applicants/new" className="text-white hover:text-primary-200 px-3 py-2 rounded-md text-sm font-medium">
                 구직등록
               </Link>
-              <button className="text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
-                로그인
-              </button>
-              <button className="bg-white hover:bg-gray-100 text-gray-900 px-6 py-2 rounded-md text-sm font-medium transition-colors">
-                회원가입
-              </button>
+              <Link href="/community" className="text-white hover:text-primary-200 px-3 py-2 rounded-md text-sm font-medium">
+                커뮤니티
+              </Link>
+              <Link href="/login" className="bg-[#1a2341] hover:bg-[#2563eb] text-white px-4 py-2 rounded-md text-sm font-bold shadow-lg border border-[#1a2341]">로그인</Link>
+              <Link href="/signup" className="bg-[#1a2341] hover:bg-[#2563eb] text-white px-4 py-2 rounded-md text-sm font-bold shadow-lg border border-[#1a2341]">회원가입</Link>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/80 to-gray-900/90 z-10"></div>
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
-
-        {/* Main Content */}
-        <div className="relative z-20 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              전문직 사무실
-              <br />
-              <span className="text-primary-400">구인구직 플랫폼</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-              변호사, 법무사, 세무사, 회계사, 관세사, 변리사 사무실에서 일하는 
-              <br />
-              사무직원들의 전문 구인구직 플랫폼입니다.
-            </p>
-            
-            {/* Play Button */}
-            <div className="flex justify-center mb-12">
-              <button className="group flex items-center space-x-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full transition-all duration-300">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play className="w-6 h-6 text-gray-900 ml-1" />
-                </div>
-                <span className="text-lg font-medium">소개 영상 보기</span>
+      {/* Hero Section with Video Background */}
+      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/office-video.mp4" type="video/mp4" />
+          {/* Fallback background if video doesn't load */}
+        </video>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            노터리
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-200">
+            전문직 사무실 구인구직의 새로운 기준
+          </p>
+          <p className="text-lg md:text-xl mb-12 text-gray-300 max-w-2xl mx-auto">
+            변호사, 세무사, 회계사 등 전문직 사무실과<br />
+            전문 사무직원이 함께 성장하는 미래를 만듭니다.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/jobs/new">
+              <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+                <Building2 className="h-5 w-5" />
+                <span>구인등록</span>
               </button>
-            </div>
-          </div>
-
-          {/* Main Action Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* 구인 카드 */}
-            <div className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 cursor-pointer">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Building2 className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-4">구인</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  사무실에서 필요한 사무직원을 찾아보세요
-                </p>
-                <Link href="/jobs/new" className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                  <span>구인공고 등록</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* 구직 카드 */}
-            <div className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 cursor-pointer">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-4">구직</h3>
-                <p className="text-gray-300 mb-6 text-lg">
-                  전문직 사무실에서 일하고 싶은 분들
-                </p>
-                <Link href="/applicants/new" className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                  <span>구직 등록</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
+            </Link>
+            <Link href="/applicants/new">
+              <button className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+                <Users className="h-5 w-5" />
+                <span>구직등록</span>
+              </button>
+            </Link>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Search Section */}
-      <section className="relative bg-white py-20">
+      {/* Features Section */}
+      <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">원하는 조건으로 검색해보세요</h3>
-            <p className="text-lg text-gray-600">지역, 직종, 경력을 선택하여 맞는 공고를 찾아보세요</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              왜 노터리를 선택해야 할까요?
+            </h2>
+            <p className="text-xl text-gray-600">
+              전문직 사무실에 특화된 서비스로 더 나은 매칭을 제공합니다
+            </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <select className="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg">
-                    <option>지역 선택</option>
-                    <option>서울</option>
-                    <option>부산</option>
-                    <option>대구</option>
-                    <option>인천</option>
-                    <option>광주</option>
-                    <option>대전</option>
-                    <option>울산</option>
-                  </select>
-                </div>
-                <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <select className="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg">
-                    <option>직종 선택</option>
-                    <option>변호사 사무실</option>
-                    <option>법무사 사무실</option>
-                    <option>세무사 사무실</option>
-                    <option>회계사 사무실</option>
-                    <option>관세사 사무실</option>
-                    <option>변리사 사무실</option>
-                  </select>
-                </div>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <select className="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg">
-                    <option>경력 선택</option>
-                    <option>신입</option>
-                    <option>1-3년</option>
-                    <option>3-5년</option>
-                    <option>5년 이상</option>
-                  </select>
-                </div>
-                <button className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-medium text-lg flex items-center justify-center transition-colors">
-                  <Search className="h-6 w-6 mr-2" />
-                  검색
-                </button>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">정확한 매칭</h3>
+              <p className="text-gray-600">
+                전문직 사무실 특성에 맞는 
+                <br />
+                정확한 인재 매칭 서비스
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">신뢰성</h3>
+              <p className="text-gray-600">
+                검증된 전문직 사무실과 
+                <br />
+                신뢰할 수 있는 구직자
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">효율성</h3>
+              <p className="text-gray-600">
+                빠르고 효율적인 
+                <br />
+                구인구직 프로세스
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing Section */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              합리적인 요금제
+            </h2>
+            <p className="text-xl text-gray-600">
+              1주일 무료 체험으로 시작하세요
+            </p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8 mb-8">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <Clock className="h-8 w-8 text-blue-600" />
+              <h3 className="text-2xl font-bold text-blue-900">1주일 무료 체험</h3>
+            </div>
+            <p className="text-blue-800 text-lg text-center mb-6">
+              모든 플랜에 <span className="font-bold">1주일 무료 체험</span>이 포함됩니다.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl p-6 text-center">
+                <h4 className="font-bold text-gray-900 mb-2">월간 플랜</h4>
+                <p className="text-2xl font-bold text-primary-600 mb-2">29,000원</p>
+                <p className="text-sm text-gray-600">월</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center border-2 border-primary-500">
+                <h4 className="font-bold text-gray-900 mb-2">분기 플랜</h4>
+                <p className="text-2xl font-bold text-primary-600 mb-2">79,000원</p>
+                <p className="text-sm text-gray-600">3개월</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center">
+                <h4 className="font-bold text-gray-900 mb-2">연간 플랜</h4>
+                <p className="text-2xl font-bold text-primary-600 mb-2">290,000원</p>
+                <p className="text-sm text-gray-600">년</p>
               </div>
             </div>
           </div>
+          
+          <div className="text-center">
+            <Link href="/payment">
+              <button className="bg-primary-600 hover:bg-primary-700 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                요금제 자세히 보기
+              </button>
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
+      <div className="py-16 bg-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="text-4xl font-bold text-primary-600 mb-2">1,234</div>
-              <div className="text-gray-600 text-lg">등록된 사무실</div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              노터리 현황
+            </h2>
+            <p className="text-xl text-primary-100">
+              지금까지의 성과를 확인해보세요
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">500+</div>
+              <div className="text-white font-semibold text-lg">등록된 사무실</div>
+              <div className="text-blue-200 text-sm mt-1">변호사, 세무사, 회계사 등</div>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="text-4xl font-bold text-primary-600 mb-2">5,678</div>
-              <div className="text-gray-600 text-lg">등록된 구직자</div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">2,000+</div>
+              <div className="text-white font-semibold text-lg">등록된 구직자</div>
+              <div className="text-blue-200 text-sm mt-1">전문 사무직원</div>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="text-4xl font-bold text-primary-600 mb-2">9,876</div>
-              <div className="text-gray-600 text-lg">성공 매칭</div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">1,500+</div>
+              <div className="text-white font-semibold text-lg">성공 매칭</div>
+              <div className="text-blue-200 text-sm mt-1">채용 완료 건수</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">98%</div>
+              <div className="text-white font-semibold text-lg">만족도</div>
+              <div className="text-blue-200 text-sm mt-1">고객 만족도</div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Latest Jobs Section */}
       <section className="py-20 bg-white">

@@ -1,7 +1,16 @@
+"use client";
+
 import { Building2, MapPin, Calendar, DollarSign, FileText, Users } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function NewJobPage() {
+  const [salaryType, setSalaryType] = useState('fixed');
+
+  const handleSalaryTypeChange = (type: string) => {
+    setSalaryType(type);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -137,22 +146,60 @@ export default function NewJobPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     급여 *
                   </label>
-                  <div className="flex space-x-2">
-                    <input
-                      type="number"
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="최소"
-                    />
-                    <span className="flex items-center text-gray-500">~</span>
-                    <input
-                      type="number"
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="최대"
-                    />
-                    <select className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                      <option>만원</option>
-                      <option>천원</option>
-                    </select>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="salary-fixed"
+                        name="salary-type"
+                        value="fixed"
+                        className="text-primary-600 focus:ring-primary-500"
+                        checked={salaryType === 'fixed'}
+                        onChange={() => handleSalaryTypeChange('fixed')}
+                      />
+                      <label htmlFor="salary-fixed" className="text-sm text-gray-700">
+                        급여 범위 설정
+                      </label>
+                      <input
+                        type="radio"
+                        id="salary-negotiable"
+                        name="salary-type"
+                        value="negotiable"
+                        className="text-primary-600 focus:ring-primary-500"
+                        checked={salaryType === 'negotiable'}
+                        onChange={() => handleSalaryTypeChange('negotiable')}
+                      />
+                      <label htmlFor="salary-negotiable" className="text-sm text-gray-700">
+                        협의후결정
+                      </label>
+                    </div>
+                    <div id="salary-range" className={`flex space-x-2 ${salaryType === 'negotiable' ? 'hidden' : ''}`}>
+                      <input
+                        type="number"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="최소"
+                        disabled={salaryType === 'negotiable'}
+                      />
+                      <span className="flex items-center text-gray-500">~</span>
+                      <input
+                        type="number"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        placeholder="최대"
+                        disabled={salaryType === 'negotiable'}
+                      />
+                      <select 
+                        className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={salaryType === 'negotiable'}
+                      >
+                        <option>만원</option>
+                        <option>천원</option>
+                      </select>
+                    </div>
+                    {salaryType === 'negotiable' && (
+                      <div className="text-sm text-gray-600 bg-gray-50 px-3 py-2 rounded-md">
+                        채용 후 협의를 통해 급여를 결정합니다.
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -289,20 +336,68 @@ export default function NewJobPage() {
               </div>
             </div>
 
+            {/* 구직자 배려 안내 */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm text-blue-800">
+                    <strong>구직자 배려 안내:</strong> 채용이 완료되면 구직자들의 효율적인 정보 접근을 위해 
+                    <span className="font-semibold text-blue-900"> 공고를 마감해주시기 바랍니다.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 결제 안내 */}
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm text-green-800">
+                    <strong>결제 안내:</strong> 구인공고 등록은 
+                    <span className="font-semibold text-green-900"> 1주일 무료 체험</span> 후 
+                    <span className="font-semibold text-green-900"> 월 29,000원</span>부터 시작됩니다.
+                    <br />
+                    <span className="text-xs text-green-600 mt-1 block">
+                      • 1주일 무료 체험 후 자동 결제 시작 (언제든지 취소 가능)
+                      • 월간/분기/연간 플랜 선택 가능
+                      • 만족하지 않으시면 30일 내 환불 보장
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* 버튼 */}
-            <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
-              <button
-                type="button"
-                className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
-              >
-                임시저장
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md font-medium"
-              >
-                공고 등록
-              </button>
+            <div className="space-y-4 pt-6 border-t border-gray-200">
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  임시저장
+                </button>
+                <Link href="/payment">
+                  <button
+                    type="button"
+                    className="px-8 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold"
+                  >
+                    결제하고 공고 등록하기
+                  </button>
+                </Link>
+              </div>
+              <p className="text-xs text-gray-500 text-center">
+                * 결제 후 1주일 무료 체험이 시작됩니다.
+              </p>
             </div>
           </form>
         </div>

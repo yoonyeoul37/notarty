@@ -1,10 +1,12 @@
 import { Building2, MapPin, Calendar, DollarSign, FileText, Users, Phone, Mail, Clock, User, Star, Eye, Users as UsersIcon, CheckCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function JobDetailPage({ params }: { params: { id: string } }) {
-  // 실제로는 params.id를 사용해서 데이터를 가져와야 합니다
+export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  
+  // 실제로는 resolvedParams.id를 사용해서 데이터를 가져와야 합니다
   const jobData = {
-    id: params.id,
+    id: resolvedParams.id,
     title: "변호사 사무실 사무직원",
     office: "김변호사 법무법인",
     logo: "/window.svg", // 예시 로고
@@ -176,6 +178,10 @@ export default async function JobDetailPage({ params }: { params: { id: string }
                   ))}
                 </ul>
               </div>
+            </div>
+            {/* 배너 광고 칸 */}
+            <div className="bg-white rounded-2xl shadow border border-gray-100 flex items-center justify-center h-32 mt-8">
+              <span className="text-gray-400 text-lg">배너 광고 자리</span>
             </div>
           </div>
 

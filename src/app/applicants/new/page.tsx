@@ -107,7 +107,9 @@ export default function NewApplicantPage() {
               <Link href="/jobs/new" className="text-gray-600 hover:text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">구인등록</Link>
               <Link href="/applicants/new" className="text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">구직등록</Link>
               <button className="text-gray-600 hover:text-[#2563eb] px-3 py-2 rounded-md text-sm font-medium">로그인</button>
-              <button className="bg-[#2563eb] hover:bg-[#1a2341] text-white px-4 py-2 rounded-md text-sm font-medium">회원가입</button>
+              <button className="bg-[#1a2341] hover:bg-[#2563eb] text-white px-4 py-2 rounded-md text-sm font-bold shadow-lg border border-[#1a2341]">
+                회원가입
+              </button>
             </div>
           </div>
         </div>
@@ -123,8 +125,8 @@ export default function NewApplicantPage() {
             </div>
             <h1 className="text-3xl font-bold text-[#1a2341] mb-4">구직자 등록</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              전문직 사무실에서 일하고 싶은 분들의 구직 의뇨를 등록하세요. 
-              신뢰할 수 있는 구인업체들이 여러분을 기다리고 있습니다.
+              전문직 사무실에서의 커리어를 희망하신다면, 지금 구직 의사를 등록해보세요.<br />
+              검증된 우수 사무실들이 여러분의 역량을 기다리고 있습니다.
             </p>
           </div>
         </div>
@@ -360,7 +362,7 @@ export default function NewApplicantPage() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      희망 급여
+                      희망연봉
                     </label>
                     <div className="flex space-x-3">
                       <input
