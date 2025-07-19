@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'Noto Sans KR'", "Arial", "sans-serif"],
+        sans: ["'Nanum Gothic'", "Arial", "sans-serif"],
         pretendard: ['Pretendard', 'sans-serif'],
       },
       colors: {
