@@ -243,104 +243,154 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Job Card 1 - 변호사 사무실 */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
-              {/* 로고 영역 */}
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center">
-                  <span className="text-blue-600 text-2xl font-bold">⚖️</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Job Card 1 */}
+            <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-200 group">
+              {/* 헤더 */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">변호사 사무실</span>
+                    <span className="text-sm text-gray-400">•</span>
+                    <span className="text-sm text-gray-600">서울 강남구</span>
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">변호사 사무실 사무직원</h4>
+                  <p className="text-sm text-gray-600">김앤파트너스 법률사무소</p>
+                </div>
+                <span className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded font-medium ml-4">신입가능</span>
+              </div>
+
+              {/* 급여 정보 */}
+              <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">연봉</span>
+                  <span className="text-base font-semibold text-gray-900">2,500만원 ~ 3,000만원</span>
                 </div>
               </div>
               
-              {/* 회사명 */}
-              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">김앤파트너스 법률사무소</h4>
-              
-              {/* 직책 */}
-              <p className="text-center text-sm text-gray-600 mb-4">변호사 사무실 사무직원</p>
-              
-              {/* 급여 및 평점 스타일 */}
-              <div className="flex items-center justify-between text-xs text-gray-500">
-                <span>연봉 2,500-3,000만원</span>
-                <div className="flex items-center">
-                  <span className="mr-1">⭐</span>
-                  <span>신입가능</span>
+              {/* 업무 내용 - 기본 2줄, 호버시 전체 표시 */}
+              <div className="mb-4 overflow-hidden transition-all duration-300 group-hover:h-auto h-12">
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-700">• 송달업무, 송무업무 보조</p>
+                  <p className="text-sm text-gray-700">• 컴퓨터 활용 가능, 고객 응대 경험</p>
+                  {/* 호버시에만 보이는 추가 내용 */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm text-gray-700">• 성실하고 책임감 있는 분</p>
+                    <p className="text-sm text-gray-700">• 원활한 의사소통 능력</p>
+                    <p className="text-sm text-gray-700">• 장기근무 가능자</p>
+                    <p className="text-sm text-gray-700">• 변호사 사무실 경험</p>
+                    <p className="text-sm text-gray-700">• 관련 자격증 보유</p>
+                    <p className="text-sm text-gray-700">• 법률 업무 관련 경험</p>
+                  </div>
                 </div>
+              </div>
+
+              {/* 하단 */}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xs text-gray-500">2시간 전 등록</span>
+                </div>
+                <Link href="/jobs/1" className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
+                  상세보기
+                </Link>
               </div>
             </div>
 
-            {/* Job Card 2 - 세무사 사무실 */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
-              {/* 로고 영역 */}
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center">
-                  <span className="text-green-600 text-2xl font-bold">💼</span>
+            {/* Job Card 2 */}
+            <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-200 group">
+              {/* 헤더 */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">세무사 사무실</span>
+                    <span className="text-sm text-gray-400">•</span>
+                    <span className="text-sm text-gray-600">서울 서초구</span>
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">세무사 사무실 회계보조</h4>
+                  <p className="text-sm text-gray-600">한국세무회계 사무소</p>
+                </div>
+                <span className="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded font-medium ml-4">경력우대</span>
+              </div>
+
+              {/* 급여 정보 */}
+              <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">연봉</span>
+                  <span className="text-base font-semibold text-gray-900">3,000만원 ~ 3,500만원</span>
                 </div>
               </div>
               
-              {/* 회사명 */}
-              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">한국세무회계 사무소</h4>
-              
-              {/* 직책 */}
-              <p className="text-center text-sm text-gray-600 mb-4">세무사 사무실 회계보조</p>
-              
-              {/* 급여 및 평점 스타일 */}
-              <div className="flex items-center justify-between text-xs text-gray-500">
-                <span>연봉 3,000-3,500만원</span>
-                <div className="flex items-center">
-                  <span className="mr-1">⭐</span>
-                  <span>경력우대</span>
+              {/* 업무 내용 - 기본 2줄, 호버시 전체 표시 */}
+              <div className="mb-4 overflow-hidden transition-all duration-300 group-hover:h-auto h-12">
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-700">• 회계업무 보조, 세무신고 서류 작성</p>
+                  <p className="text-sm text-gray-700">• 사무업무 경험, 회계 프로그램 사용</p>
+                  {/* 호버시에만 보이는 추가 내용 */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm text-gray-700">• 컴퓨터 활용 가능 (한글, 엑셀 등)</p>
+                    <p className="text-sm text-gray-700">• 세무사 사무실 경험</p>
+                    <p className="text-sm text-gray-700">• 관련 자격증 보유</p>
+                  </div>
                 </div>
+              </div>
+
+              {/* 하단 */}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xs text-gray-500">5시간 전 등록</span>
+                </div>
+                <Link href="/jobs/2" className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
+                  상세보기
+                </Link>
               </div>
             </div>
 
-            {/* Job Card 3 - 법무사 사무실 */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
-              {/* 로고 영역 */}
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center">
-                  <span className="text-orange-600 text-2xl font-bold">📋</span>
+            {/* Job Card 3 */}
+            <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-gray-200 group">
+              {/* 헤더 */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">법무사 사무실</span>
+                    <span className="text-sm text-gray-400">•</span>
+                    <span className="text-sm text-gray-600">부산 해운대구</span>
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">법무사 사무실 행정직원</h4>
+                  <p className="text-sm text-gray-600">부산종합법무사 사무소</p>
                 </div>
+                <span className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded font-medium ml-4">신입가능</span>
               </div>
-              
-              {/* 회사명 */}
-              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">부산종합법무사 사무소</h4>
-              
-              {/* 직책 */}
-              <p className="text-center text-sm text-gray-600 mb-4">법무사 사무실 행정직원</p>
-              
-              {/* 급여 및 평점 스타일 */}
-              <div className="flex items-center justify-between text-xs text-gray-500">
-                <span>연봉 2,200-2,500만원</span>
-                <div className="flex items-center">
-                  <span className="mr-1">⭐</span>
-                  <span>신입가능</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Job Card 4 - 회계사 사무실 */}
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
-              {/* 로고 영역 */}
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-purple-50 rounded-lg flex items-center justify-center">
-                  <span className="text-purple-600 text-2xl font-bold">📊</span>
+              {/* 급여 정보 */}
+              <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">연봉</span>
+                  <span className="text-base font-semibold text-gray-900">2,200만원 ~ 2,500만원</span>
                 </div>
               </div>
               
-              {/* 회사명 */}
-              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">대한회계법인</h4>
-              
-              {/* 직책 */}
-              <p className="text-center text-sm text-gray-600 mb-4">회계사 사무실 회계보조</p>
-              
-              {/* 급여 및 평점 스타일 */}
-              <div className="flex items-center justify-between text-xs text-gray-500">
-                <span>연봉 2,800-3,200만원</span>
-                <div className="flex items-center">
-                  <span className="mr-1">⭐</span>
-                  <span>경력무관</span>
+              {/* 업무 내용 - 기본 2줄, 호버시 전체 표시 */}
+              <div className="mb-4 overflow-hidden transition-all duration-300 group-hover:h-auto h-12">
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-700">• 행정업무 및 고객 응대</p>
+                  <p className="text-sm text-gray-700">• 컴퓨터 활용 가능, 성실하고 책임감</p>
+                  {/* 호버시에만 보이는 추가 내용 */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm text-gray-700">• 장기근무 가능자</p>
+                    <p className="text-sm text-gray-700">• 원활한 의사소통 능력</p>
+                    <p className="text-sm text-gray-700">• 법무사 사무실 경험</p>
+                  </div>
                 </div>
+              </div>
+
+              {/* 하단 */}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                <div className="flex items-center space-x-3">
+                  <span className="text-xs text-gray-500">1일 전 등록</span>
+                </div>
+                <Link href="/jobs/3" className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
+                  상세보기
+                </Link>
               </div>
             </div>
           </div>
@@ -391,4 +441,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+} 

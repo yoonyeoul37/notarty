@@ -30,6 +30,9 @@ export default function NewJobPage() {
               <Link href="/applicants/new" className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">
                 구직등록
               </Link>
+              <Link href="/community" className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">
+                커뮤니티
+              </Link>
               <button className="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">
                 로그인
               </button>
