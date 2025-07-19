@@ -188,22 +188,22 @@ export default function CommunityPage() {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                <Users className="h-8 w-8 text-primary-600 mx-auto mb-2" />
+                <Users className="h-8 w-8 text-gray-600 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">1,234</div>
                 <div className="text-gray-600">활성 회원</div>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                <MessageCircle className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <MessageCircle className="h-8 w-8 text-gray-600 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">5,678</div>
                 <div className="text-gray-600">총 게시글</div>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                <MessageSquare className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                <MessageSquare className="h-8 w-8 text-gray-600 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">12,345</div>
                 <div className="text-gray-600">총 댓글</div>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-                <TrendingUp className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+                <TrendingUp className="h-8 w-8 text-gray-600 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900">89</div>
                 <div className="text-gray-600">오늘 게시글</div>
               </div>
@@ -251,17 +251,11 @@ export default function CommunityPage() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-2">
-                              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                post.category === 'question' ? 'bg-blue-100 text-blue-700' :
-                                post.category === 'info' ? 'bg-green-100 text-green-700' :
-                                post.category === 'daily' ? 'bg-purple-100 text-purple-700' :
-                                post.category === 'career' ? 'bg-orange-100 text-orange-700' :
-                                'bg-gray-100 text-gray-700'
-                              }`}>
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
                                 {categories.find(c => c.id === post.category)?.name}
                               </span>
                               {post.isHot && (
-                                <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium">
+                                <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
                                   HOT
                                 </span>
                               )}
