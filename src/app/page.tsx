@@ -243,169 +243,104 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Job Card 1 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-100">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">변호사 사무실 사무직원</h4>
-                  <p className="text-gray-600">서울 강남구</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Job Card 1 - 변호사 사무실 */}
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
+              {/* 로고 영역 */}
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center">
+                  <span className="text-blue-600 text-2xl font-bold">⚖️</span>
                 </div>
-                <span className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-medium">신입가능</span>
               </div>
               
-              {/* 기본 표시 내용 */}
-              <div className={`space-y-2 mb-4 ${expandedCards['card1'] ? '' : 'h-20 overflow-hidden'}`}>
-                <p className="text-gray-600 text-sm line-clamp-1">• 송달업무, 송무업무 보조</p>
-                <p className="text-gray-600 text-sm line-clamp-1">• 컴퓨터 활용 가능, 고객 응대 경험</p>
-                {!expandedCards['card1'] ? (
-                  <p className="text-gray-600 text-sm line-clamp-1">• 변호사 사무실 경험 외 3개</p>
-                ) : (
-                  <>
-                    <p className="text-gray-600 text-sm">• 성실하고 책임감 있는 분</p>
-                    <p className="text-gray-600 text-sm">• 원활한 의사소통 능력</p>
-                    <p className="text-gray-600 text-sm">• 장기근무 가능자</p>
-                    <p className="text-gray-600 text-sm">• 변호사 사무실 경험</p>
-                    <p className="text-gray-600 text-sm">• 관련 자격증 보유</p>
-                    <p className="text-gray-600 text-sm">• 법률 업무 관련 경험</p>
-                  </>
-                )}
-              </div>
-
-              {/* 더보기/접기 버튼 */}
-              <button
-                onClick={() => toggleCard('card1')}
-                className="flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium mb-4 transition-colors"
-              >
-                {expandedCards['card1'] ? (
-                  <>
-                    <span>접기</span>
-                    <ChevronUp className="h-4 w-4 ml-1" />
-                  </>
-                ) : (
-                  <>
-                    <span>더보기</span>
-                    <ChevronDown className="h-4 w-4 ml-1" />
-                  </>
-                )}
-              </button>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500">2시간 전</span>
-                  <span className="text-primary-600 font-medium text-sm">월 250~300만원</span>
+              {/* 회사명 */}
+              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">김앤파트너스 법률사무소</h4>
+              
+              {/* 직책 */}
+              <p className="text-center text-sm text-gray-600 mb-4">변호사 사무실 사무직원</p>
+              
+              {/* 급여 및 평점 스타일 */}
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>연봉 2,500-3,000만원</span>
+                <div className="flex items-center">
+                  <span className="mr-1">⭐</span>
+                  <span>신입가능</span>
                 </div>
-                <Link href="/jobs/1" className="text-primary-600 hover:text-primary-700 font-medium">
-                  상세보기
-                </Link>
               </div>
             </div>
 
-            {/* Job Card 2 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-100">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">세무사 사무실 회계보조</h4>
-                  <p className="text-gray-600">서울 서초구</p>
+            {/* Job Card 2 - 세무사 사무실 */}
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
+              {/* 로고 영역 */}
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center">
+                  <span className="text-green-600 text-2xl font-bold">💼</span>
                 </div>
-                <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">경력우대</span>
               </div>
               
-              {/* 기본 표시 내용 */}
-              <div className={`space-y-2 mb-4 ${expandedCards['card2'] ? '' : 'h-20 overflow-hidden'}`}>
-                <p className="text-gray-600 text-sm line-clamp-1">• 회계업무 보조, 세무신고 서류 작성</p>
-                <p className="text-gray-600 text-sm line-clamp-1">• 사무업무 경험, 회계 프로그램 사용</p>
-                {!expandedCards['card2'] ? (
-                  <p className="text-gray-600 text-sm line-clamp-1">• 세무사 사무실 경험 외 2개</p>
-                ) : (
-                  <>
-                    <p className="text-gray-600 text-sm">• 컴퓨터 활용 가능 (한글, 엑셀 등)</p>
-                    <p className="text-gray-600 text-sm">• 세무사 사무실 경험</p>
-                    <p className="text-gray-600 text-sm">• 관련 자격증 보유</p>
-                  </>
-                )}
-              </div>
-
-              {/* 더보기/접기 버튼 */}
-              <button
-                onClick={() => toggleCard('card2')}
-                className="flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium mb-4 transition-colors"
-              >
-                {expandedCards['card2'] ? (
-                  <>
-                    <span>접기</span>
-                    <ChevronUp className="h-4 w-4 ml-1" />
-                  </>
-                ) : (
-                  <>
-                    <span>더보기</span>
-                    <ChevronDown className="h-4 w-4 ml-1" />
-                  </>
-                )}
-              </button>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500">5시간 전</span>
-                  <span className="text-primary-600 font-medium text-sm">월 300~350만원</span>
+              {/* 회사명 */}
+              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">한국세무회계 사무소</h4>
+              
+              {/* 직책 */}
+              <p className="text-center text-sm text-gray-600 mb-4">세무사 사무실 회계보조</p>
+              
+              {/* 급여 및 평점 스타일 */}
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>연봉 3,000-3,500만원</span>
+                <div className="flex items-center">
+                  <span className="mr-1">⭐</span>
+                  <span>경력우대</span>
                 </div>
-                <Link href="/jobs/2" className="text-primary-600 hover:text-primary-700 font-medium">
-                  상세보기
-                </Link>
               </div>
             </div>
 
-            {/* Job Card 3 */}
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-100">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">법무사 사무실 행정직원</h4>
-                  <p className="text-gray-600">부산 해운대구</p>
+            {/* Job Card 3 - 법무사 사무실 */}
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
+              {/* 로고 영역 */}
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center">
+                  <span className="text-orange-600 text-2xl font-bold">📋</span>
                 </div>
-                <span className="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full font-medium">신입가능</span>
               </div>
               
-              {/* 기본 표시 내용 */}
-              <div className={`space-y-2 mb-4 ${expandedCards['card3'] ? '' : 'h-20 overflow-hidden'}`}>
-                <p className="text-gray-600 text-sm line-clamp-1">• 행정업무 및 고객 응대</p>
-                <p className="text-gray-600 text-sm line-clamp-1">• 컴퓨터 활용 가능, 성실하고 책임감</p>
-                {!expandedCards['card3'] ? (
-                  <p className="text-gray-600 text-sm line-clamp-1">• 장기근무 가능자</p>
-                ) : (
-                  <>
-                    <p className="text-gray-600 text-sm">• 장기근무 가능자</p>
-                    <p className="text-gray-600 text-sm">• 원활한 의사소통 능력</p>
-                    <p className="text-gray-600 text-sm">• 법무사 사무실 경험</p>
-                  </>
-                )}
-              </div>
-
-              {/* 더보기/접기 버튼 */}
-              <button
-                onClick={() => toggleCard('card3')}
-                className="flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium mb-4 transition-colors"
-              >
-                {expandedCards['card3'] ? (
-                  <>
-                    <span>접기</span>
-                    <ChevronUp className="h-4 w-4 ml-1" />
-                  </>
-                ) : (
-                  <>
-                    <span>더보기</span>
-                    <ChevronDown className="h-4 w-4 ml-1" />
-                  </>
-                )}
-              </button>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500">1일 전</span>
-                  <span className="text-primary-600 font-medium text-sm">월 220~250만원</span>
+              {/* 회사명 */}
+              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">부산종합법무사 사무소</h4>
+              
+              {/* 직책 */}
+              <p className="text-center text-sm text-gray-600 mb-4">법무사 사무실 행정직원</p>
+              
+              {/* 급여 및 평점 스타일 */}
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>연봉 2,200-2,500만원</span>
+                <div className="flex items-center">
+                  <span className="mr-1">⭐</span>
+                  <span>신입가능</span>
                 </div>
-                <Link href="/jobs/3" className="text-primary-600 hover:text-primary-700 font-medium">
-                  상세보기
-                </Link>
+              </div>
+            </div>
+
+            {/* Job Card 4 - 회계사 사무실 */}
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 p-6">
+              {/* 로고 영역 */}
+              <div className="flex justify-center mb-4">
+                <div className="w-16 h-16 bg-purple-50 rounded-lg flex items-center justify-center">
+                  <span className="text-purple-600 text-2xl font-bold">📊</span>
+                </div>
+              </div>
+              
+              {/* 회사명 */}
+              <h4 className="text-center text-lg font-bold text-gray-900 mb-2">대한회계법인</h4>
+              
+              {/* 직책 */}
+              <p className="text-center text-sm text-gray-600 mb-4">회계사 사무실 회계보조</p>
+              
+              {/* 급여 및 평점 스타일 */}
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>연봉 2,800-3,200만원</span>
+                <div className="flex items-center">
+                  <span className="mr-1">⭐</span>
+                  <span>경력무관</span>
+                </div>
               </div>
             </div>
           </div>
